@@ -1,2 +1,9 @@
-# a-testable-architecture-with-living-documentation
-An example of a Testable Architecture with Living documentation
+# A Testable Architecture With Living Documentation
+
+An example of a Testable Architecture with Living documentation.
+
+## Building
+
+Build using Maven
+
+`./mvnw clean install`
