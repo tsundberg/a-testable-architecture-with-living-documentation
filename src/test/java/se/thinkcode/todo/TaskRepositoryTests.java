@@ -15,12 +15,12 @@ public abstract class TaskRepositoryTests {
 
     @Test
     public void should_add_a_task() {
+        Task expected = new Task("Buy Minutuu");
         Owner owner = new Owner("Malin");
-        Task task = new Task("Buy Minutuu");
-        taskRepository.addTask(owner, task);
 
+        taskRepository.addTask(owner, expected);
         List<Task> actual = taskRepository.getTasks(owner);
 
-        assertThat(actual).containsExactly(task);
+        assertThat(actual).containsExactly(expected);
     }
 }
