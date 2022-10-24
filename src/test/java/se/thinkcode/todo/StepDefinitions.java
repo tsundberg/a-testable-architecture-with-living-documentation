@@ -3,18 +3,19 @@ package se.thinkcode.todo;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import se.thinkcode.todo.adapters.TodoListDriver;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static se.thinkcode.todo.adapters.DriverFactory.getDriver;
 
 public class StepDefinitions {
-    private TodoListService todoListService;
+    private TodoListDriver todoListDriver;
 
     @Given("we are almost out of cat food")
     public void we_are_almost_out_of_cat_food() {
-        TaskRepository taskRepository = new InMemoryTaskRepository();
-        todoListService = new TodoListService(taskRepository);
+        todoListDriver = getDriver();
     }
 
     @When("I add buy cat food to my todo list")
@@ -22,7 +23,7 @@ public class StepDefinitions {
         Owner owner = new Owner("Thomas");
         Task task = new Task("Buy food for the cat");
 
-        todoListService.addTask(owner, task);
+        todoListDriver.addTask(owner, task);
     }
 
     @Then("I won't forget to get more food to My and Gretchen")
@@ -30,7 +31,7 @@ public class StepDefinitions {
         Task expected = new Task("Buy food for the cat");
         Owner owner = new Owner("Thomas");
 
-        List<Task> actual = todoListService.getTasks(owner);
+        List<Task> actual = todoListDriver.getTasks(owner);
 
         assertThat(actual).containsExactly(expected);
     }

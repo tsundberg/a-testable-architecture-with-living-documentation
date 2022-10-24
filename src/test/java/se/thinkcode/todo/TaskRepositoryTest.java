@@ -6,10 +6,10 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public abstract class TaskRepositoryTests {
+public abstract class TaskRepositoryTest {
     private final TaskRepository taskRepository;
 
-    public TaskRepositoryTests(TaskRepository taskRepository) {
+    public TaskRepositoryTest(TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
     }
 

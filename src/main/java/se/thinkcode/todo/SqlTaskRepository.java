@@ -17,8 +17,8 @@ public class SqlTaskRepository implements TaskRepository {
         UUID uuid = UUID.randomUUID();
         String key = uuid.toString();
 
-        String ownerName = owner.getName();
-        String taskName = task.getDescription();
+        String ownerName = owner.name();
+        String taskName = task.description();
 
         dao.add(key, ownerName, taskName);
     }
@@ -27,7 +27,7 @@ public class SqlTaskRepository implements TaskRepository {
     public List<Task> getTasks(Owner owner) {
         TaskDAO dao = dataSource.getTaskDAO();
 
-        String ownerName = owner.getName();
+        String ownerName = owner.name();
 
         return dao.getTasks(ownerName);
     }
